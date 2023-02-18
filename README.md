@@ -58,7 +58,12 @@ Total time budgeted (including breaks) - 3 hours
 	- Analytics vs Engineering
 2. **Overview of a Data Platform (~40 minutes)**
 	- Walk-through of the system
-	- Breakdown of our Data Platform
+	- Breakdown of a Data Platform
+	- Our Approach Today
+		- Minimalistic Solution
+			1. Workflow
+			2. Tools
+		- Hardcore Solution
 	- Connecting data products to our platform
 	- Extending our platform to cover machine learning use-cases
 	- Exercise (7-min)
@@ -71,11 +76,11 @@ Total time budgeted (including breaks) - 3 hours
 	- Understanding data versioning and lineage
 	- Exercise (7-min).
 5. **10 minute break**
-6. **Infrastructure (~50 minutes)**
+6. **Infrastructure for All Data Projects (~50 minutes)**
 	- Orchestration
 		- Monitoring and
 		- scheduling pipelines
-	- Testing our data platform
+	- Testing our data pipelines
 		- Testing code with `pytest`, `mypy`, and `hypothesis`
 		- Testing Data with `great_expectations`
 	- Automation
