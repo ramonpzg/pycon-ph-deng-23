@@ -52,27 +52,34 @@ Total time budgeted (including breaks) - 3 hours
 
 1. **Introduction and Setup (~10 minutes)**
 	- Environment set up. An optional free-to-use environment will be provided in Binder, GitPod, Google Colab, and GitHub Codespaces
-	- Agenda for the session
 	- Instructor intro
 	- Motivation for the workshop
-	- Analytics vs Engineering
+	- Agenda for Today
+		1. What is Data Engineering?
+			- A quick note on Analytics Engineering vs Data Engineering
+		2. Core Tenets of a Data Architecture
+		3. Creating Own Data Orchestration Tool
+			- Intro to Data Pipelines
+		4. A Framework Solution
+			1. Workflow
+			2. Tools
+		5. A Platform Solution
+		6. Next Steps
+	- Kick Off
 2. **Overview of a Data Platform (~40 minutes)**
 	- Walk-through of the system
 	- Breakdown of a Data Platform
-	- Our Approach Today
-		- Minimalistic Solution
-			1. Workflow
-			2. Tools
-		- Hardcore Solution
+	- Intro to Data Pipelines
+		- ETL vs ELT
+		- Pipelines with `pandas
+		- Pipelines with `Prefect
 	- Connecting data products to our platform
 	- Extending our platform to cover machine learning use-cases
 	- Exercise (7-min)
 3. **10 minute break**
 4. **Data Pipelines (~50 minutes)**
-	- Intro to Data Pipelines
-		- ETL vs ELT
-		- Pipelines with `pandas
-		- Pipelines with `Prefect
+	- What our previous solution lack
+	- Automating Data Pipelines
 	- Understanding data versioning and lineage
 	- Exercise (7-min).
 5. **10 minute break**
