@@ -14,8 +14,8 @@ def get_and_load_file(url, path_out, file_name):
     urllib.request.urlretrieve(url, path.joinpath(file_name))
 
 
-def extract_from_csv(path_in, log_it=False):
-    data =  pd.read_csv(path_in)
+def extract_from_csv(path_in, log_it=False, encoding=None):
+    data =  pd.read_csv(path_in, encoding=encoding)
     if log_it:
         results = why(data)
         return data, results
@@ -63,6 +63,7 @@ def main(
         url: Optional[str] = typer.Option(None),
         path_in: Optional[str] = typer.Option(None),
         path_out: Optional[str] = typer.Option(None),
+        encoding: Optional[str] = typer.Option(None),
         file_name: Optional[str] = typer.Option(None),
         query: Optional[str] = typer.Option(None),
         log_it: Optional[bool] = typer.Option(False),
@@ -70,36 +71,22 @@ def main(
     if arg == "get":
         get_and_load_file(url, path_out, file_name)
     elif arg == "csv":
-        data = extract_from_csv(path_in, log_it=False)
+        data = extract_from_csv(path_in, log_it=log_it, encoding=encoding)
         save_data(data, path_out, file_name)
     elif arg == "pq":
-        data = extract_from_parquet(path_in, log_it=False)
+        data = extract_from_parquet(path_in, log_it=log_it)
         save_data(data, path_out, file_name)
     elif arg == "json":
-        data = extract_from_json(path_in, log_it=False)
+        data = extract_from_json(path_in, log_it=log_it)
         save_data(data, path_out, file_name)
     elif arg == "db":
         data = extract_from_db(path_in, query)
         save_data(data, path_out, file_name)
     else:
-        print("Could not understand argument {arg}. Please use 'pq' for parquet files, 'db' for database, json, or csv in lowercase.")
+        print(f"Could not understand argument {arg}. Please use 'pq' for parquet files, 'db' for database, json, or csv in lowercase.")
 
     print("Data Extracted Successfully!")
 
 
 if __name__ == "__main__":
     typer.run(main)
-
-    # func = 
-    # data_url = 
-    # path = 
-    # file_name = 
-    # log_it = None
-
-    # if func == "db":
-    #     extract_from_db(path)
-    
-    # get_bikes_data(url, path, file_name)
-    # print("File Downloaded Successfully!")
-
-

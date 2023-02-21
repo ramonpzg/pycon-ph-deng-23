@@ -12,9 +12,12 @@ def extract_dates(data, date_col, hour_col=None):
     data["date"] = pd.to_datetime(data[date_col], infer_datetime_format=True)
     if not data.columns.isin(["hour", "Hour", "hr", "HR"]).any():
         data["hour"] = data['date'].dt.hour
-
-    #Time series datasets need to be ordered by time.
-    data.sort_values(["date", hour_col], inplace=True)
+        #Time series datasets need to be ordered by time.
+        data.sort_values(["date", "hour"], inplace=True)
+    elif hour_col:
+        data.sort_values(["date", hour_col], inplace=True)
+    else:
+        print("You must figure out how the hour works in your file.")
 
     data["year"]           = data['date'].dt.year
     data["month"]          = data['date'].dt.month
