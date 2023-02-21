@@ -1,0 +1,36 @@
+schema: '2.0'
+stages:
+  seoul_extract:
+    cmd: python src/data_eng/extract.py --arg csv --path-in data/seoul/SeoulBikeData.csv
+      --path-out data/seoul/raw --file-name seoul_raw.parquet --encoding iso-8859-1
+    deps:
+    - path: data/seoul/SeoulBikeData.csv
+      md5: 6c797d091e711db79d2ca25774acef59
+      size: 595409
+    outs:
+    - path: data/seoul/raw/seoul_raw.parquet
+      md5: 3aaf89ed2cc2bdf72e6173020aadeb93
+      size: 105013
+  seoul_transform:
+    cmd: python src/data_eng/transform.py --path-in data/seoul/raw/seoul_raw.parquet
+      --date-col Date --hour-col Hour --place Seoul --path-out data/seoul/interim
+      --file-name seoul_clean.parquet
+    deps:
+    - path: data/seoul/raw/seoul_raw.parquet
+      md5: 3aaf89ed2cc2bdf72e6173020aadeb93
+      size: 105013
+    outs:
+    - path: data/seoul/interim/seoul_clean.parquet
+      md5: 3197015b1fb2a019fa6e6163e5717e39
+      size: 161417
+  seoul_load:
+    cmd: python src/data_eng/load.py --kind db --path-in data/seoul/interim/seoul_clean.parquet
+      --path-out data/dwarehouse --name analytics.db --table-name seoul_main
+    deps:
+    - path: data/seoul/interim/seoul_clean.parquet
+      md5: 3197015b1fb2a019fa6e6163e5717e39
+      size: 161417
+    outs:
+    - path: data/dwarehouse/analytics.db
+      md5: b7ed32a8b9560eeaca1268c315e5a174
+      size: 274432
