@@ -16,6 +16,12 @@ def create_parquet(path_in, path_out, name):
     pd.read_parquet(path_in).to_parquet(path.joinpath(name))
     print(f"Successfully loaded the {path_in.split('/')[-1]} table!")
 
+def save_data(data, path_out, file_name):
+    path_out = Path(path_out)
+    if not path_out.exists(): path_out.mkdir(parents=True)
+    data.to_parquet(path_out.joinpath(file_name))
+
+
 def main(
     kind: str = typer.Option(...),
     path_in: Optional[str] = typer.Option(None), 
