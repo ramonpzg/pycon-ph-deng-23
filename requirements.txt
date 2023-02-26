@@ -10,3 +10,4 @@ awscli
 awslocal
 localstack
 metaflow
+whylogs

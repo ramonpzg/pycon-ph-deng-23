@@ -9,21 +9,18 @@ from load import save_data
 
 def get_and_load_file(url, path_out, file_name):
     path = Path(path_out)
-    if not path.exists():
-        path.mkdir(parents=True)
+    if not path.exists(): path.mkdir(parents=True)
     urllib.request.urlretrieve(url, path.joinpath(file_name))
 
 def extract_from_csv(path_in, encoding=None):
-    data =  pd.read_csv(path_in, encoding=encoding)
-    return data
+    return pd.read_csv(path_in, encoding=encoding)
 
 def extract_from_db(path_in, query):
     conn = sqlite3.connect(path_in)
     return pd.read_sql_query(query, conn)
 
 def extract_from_parquet(path_in, **kwargs):
-    data =  pd.read_parquet(path_in, kwargs)
-    return data
+    return pd.read_parquet(path_in, kwargs)
 
 def extract_from_json(path_in, **kwargs):
     try:

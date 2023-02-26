@@ -1,0 +1,23 @@
+stages:
+  seoul_extract:
+    cmd: python src/data_eng/extract.py --arg csv --path-in data/seoul/SeoulBikeData.csv
+      --path-out data/seoul/raw --file-name seoul_raw.parquet --encoding iso-8859-1
+    deps:
+      - data/seoul/SeoulBikeData.csv
+    outs:
+      - data/seoul/raw/seoul_raw.parquet
+  seoul_transform:
+    cmd: python src/data_eng/transform.py --path-in data/seoul/raw/seoul_raw.parquet
+      --date-col Date --hour-col Hour --place Seoul --path-out data/seoul/interim
+      --file-name seoul_clean.parquet
+    deps:
+      - data/seoul/raw/seoul_raw.parquet
+    outs:
+      - data/seoul/interim/seoul_clean.parquet
+  seoul_load:
+    cmd: python src/data_eng/load.py --kind db --path-in data/seoul/interim/seoul_clean.parquet
+      --path-out data/dwarehouse --name analytics.db --table-name seoul_main
+    deps:
+      - data/seoul/interim/seoul_clean.parquet
+    outs:
+      - data/dwarehouse/analytics.db
