@@ -2,7 +2,6 @@
 
 ## Title
 
-> "Introduction to Data Engineering: A Roadmap to Building Robust Data Infrastructures"
 > "Data Engineering: A Roadmap to Building a Robust Data Infrastructure for Your Projects"
 
 
@@ -29,7 +28,7 @@ As soon as you walk into this workshop you will put on the hat of a Data Enginee
 
 Data pipelines are useful tools for data professionals at all levels in an organisation and within different industries. From data analysts and scientists who want to move data around for their analyses and model-building and tunning stages, to data engineers building extract, transform, and load pipelines that scale the flow and accessibility of data within their organizations. With this in mind, the goal of this workshop is to help Python programmers learn how to build pipelines that move and transform data from different sources into others to then power analytical applications like dashboards, machine learning models, and chatbots, among many others..
 
-The workshop will emphasize both methodology and frameworks through a top-down approach, and several of the open source libraries included are Prefect, Scikit-Learn, LightGBM, pandas, and the HoloViz suite of data visualization libraries. In addition, the workshop covers important concepts from data engineering, data analytics, and data science. Lastly, since we will start with the end results -- the overview of the system, the clean data we have, and the explanation of how we got it there -- participants will build a foundation for how to reverse engineer data pipelines and other processes they find in the wild by following the guidelines and processes provided in the workshop.
+The workshop will emphasize both methodology and frameworks through a top-down approach, and several of the open source libraries included are pandas and metaflow. In addition, the workshop covers important concepts from data engineering, data analytics, and data science. Lastly, since we will start with the end results -- the overview of the system, the clean data we have, and the explanation of how we got it there -- participants will build a foundation for how to reverse engineer data pipelines and other processes they find in the wild by following the guidelines and processes provided in the workshop.
 
 
 ## Format
@@ -42,7 +41,7 @@ The target audience for this session includes analysts of all levels, developers
 
 - **(P)** Attendees for this tutorial are expected to be familiar with Python (1 year of coding). 
 - **(P)** Participants should be comfortable with loops, functions, lists comprehensions, and if-else statements.
-- **(GTH)** While it is not necessary to have any knowledge of data analytics libraries, some experience with pandas, Prefect, matplotlib and scikit-learn, a bit of experience with these libraries would be very beneficial throughout this tutorial.
+- **(GTH)** While it is not necessary to have any knowledge of data analytics libraries, some experience with pandas would be very beneficial throughout this tutorial.
 - **(P)** Participants should have at least 5 GB of free space in their computers.
 - **(GTH)** While it is not required to have experience with integrated development environments like VS Code or Jupyter Lab, this would be very beneficial for the session.
 
@@ -50,7 +49,7 @@ The target audience for this session includes analysts of all levels, developers
 
 Total time budgeted (including breaks) - 3 hours
 
-1. **Introduction and Setup (~10 minutes)**
+1. **Introduction and Setup (~20 minutes)**
 	- Environment set up. An optional free-to-use environment will be provided in Binder, GitPod, Google Colab, and GitHub Codespaces
 	- Instructor intro
 	- Motivation for the workshop
@@ -66,34 +65,79 @@ Total time budgeted (including breaks) - 3 hours
 		5. A Platform Solution
 		6. Next Steps
 	- Kick Off
-2. **Overview of a Data Platform (~40 minutes)**
+2. **Data Engineering From Scratch (~1 hour)**
 	- Walk-through of the system
-	- Breakdown of a Data Platform
 	- Intro to Data Pipelines
-		- ETL vs ELT
-		- Pipelines with `pandas
-		- Pipelines with `Prefect
-	- Connecting data products to our platform
-	- Extending our platform to cover machine learning use-cases
+	- Creating a Framework
+	- Bulding ETL command line tools
 	- Exercise (7-min)
 3. **10 minute break**
-4. **Data Pipelines (~50 minutes)**
+4. **Data Infrastructure (~1 hour)**
 	- What our previous solution lack
 	- Automating Data Pipelines
 	- Understanding data versioning and lineage
 	- Exercise (7-min).
 5. **10 minute break**
-6. **Infrastructure for All Data Projects (~50 minutes)**
-	- Orchestration
-		- Monitoring and
-		- scheduling pipelines
-	- Testing our data pipelines
-		- Testing code with `pytest`, `mypy`, and `hypothesis`
-		- Testing Data with `great_expectations`
-	- Automation
-		- Writing a CI/CD pipeline
-	- Exercise (7-min)
+6. **Data Platform Demo (~10 minutes)**
 7. **Wrap Up**
-	- Resources to continue your learning journey
-	- Fun projects to go through on your own
-	- Conclusion
+8. **Resources**
+
+
+## Setup
+
+If you are on a Mac or Linux machine, the set up steps will be the same. If you are in a Windows machine, you can still follow along with the tutorial, but please bare in mind that your experience  will be a much better one if you were to download, install and use (preferrably) Windows Subsystem for Linux or Git Bash for the session.
+
+You can set up the environment with conda or with virtualenv. For those who want to use conda, you should first make sure you have, [Miniconda](https://docs.conda.io/en/latest/miniconda.html) installed before following the next steps.
+
+You will also need to have docker installed and set up in your computer. While we won't be using it, part of the tutorial depends on it.
+
+#### First Step
+
+Open up your terminal and navigate to a directory of your choosing in your computer. Once there, run the following command to get the code for the session.
+
+```sh
+ git clone https://github.com/ramonpzg/pycon.git
+```
+
+Conversely, you can click on the green `download` button at the top and donwload all files to your desired folder/directory. Once you download it, unzip it and move on to the second step.
+
+#### Second Step
+
+To get all dependencies, packages and everything else that would be useful in this tutorial, you can recreate the environment by first going into the directory for today.
+
+```sh
+cd pycon-ph_pycon23
+```
+
+Then you will need to create an environment with all of the dependancies needed for the session by running the following command.
+
+```sh
+conda env create -f environment.yml
+conda activate phcon
+
+## OR
+
+python -m venv venv
+source venv/bin/activate
+pip install -f requirements.txt
+```
+
+#### Third Step
+
+Open up Jupyter Lab and you should be ready to go.
+
+```sh
+jupyter lab
+```
+
+Great work! Now navigate to `notebooks/01_from_scratch.ipynb` and open it.
+
+
+## Resources
+
+Here are a few great resources to get started with the topics covered in this workshop.
+
+- [Fundamentals of Data Engineering](https://www.oreilly.com/library/view/fundamentals-of-data/9781098108298/) by Joe Reis and Matt Housley
+- [Fundamentals of Data Visualisation](https://clauswilke.com/dataviz/) by Claus O. Wilke
+- [Python for DevOps](https://www.amazon.com/Python-DevOps-Ruthlessly-Effective-Automation/dp/149205769X) by Noah Gift, Kennedy Behrman, Alfredo Deza, and Grig Gheorghi
+- [Python for Data Analysis: Data Wrangling with Pandas, NumPy, and IPython](https://wesmckinney.com/book/) by Wes McKinney

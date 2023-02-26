@@ -1,0 +1,12 @@
+typer[all]
+pandas
+numpy
+dvc[gdrive]
+ibis-framework[duckdb]
+duckdb
+matplotlib
+boto3
+awscli
+awslocal
+localstack
+metaflow
