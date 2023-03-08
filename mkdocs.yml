@@ -1,0 +1,95 @@
+repo_url: https://github.com/ramonpzg/pycon-ph-deng-23
+repo_name: RPG Content
+
+site_name: Data Engineering Workshop - PyCon PH 2023
+site_url: https://ramonpzg.github.io/pycon-ph-deng-23
+site_description: 3-hour workshop presented at PyCon Philippines 2023
+site_author: Ramon Perez
+site_image: http://www.w3.org/2000/svg
+
+copyright: Copyright &copy; 2023 Ramon Perez
+
+theme:
+  name: material
+  language: en
+  #logo: assets/logo.png
+  palette:
+    - scheme: slate
+      primary: pink
+      accent: deep purple
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: default
+      primary: red
+      accent: red
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.indexes
+    - navigation.tabs
+    - navigation.instant
+    # - navigation.tabs.sticky
+    - content.tabs.link
+    - toc.follow
+    - navigation.top
+    - content.code.copy
+    - content.code.annotate
+  font:
+    text: Roboto
+    # code: Roboto Mono
+
+
+nav:
+  - Home: index.md
+  - Set Up:
+    - setup/index.md
+  - Data:
+    - data/indext.md
+  - Lessons:
+    - lessons/index.md
+    - Data Engineering from Scratch: lessons/01_from_scratch.md
+  - Resources: resources/index.md
+
+markdown_extensions:
+  - pymdownx.highlight:
+      linenums: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.details
+  - admonition
+  - toc:
+      baselevel: 2
+      permalink: true
+      slugify: !!python/name:pymdownx.slugs.uslugify
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - md_in_html
+
+# plugins:
+#   - include-markdown
+#   - search:
+#       lang: en
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/ramonpzg/rpg_content
+      name: Github
+    - icon: material/email
+      link: "mailto:ramonpzg01@gmail.com"
