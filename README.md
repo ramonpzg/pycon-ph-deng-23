@@ -96,7 +96,7 @@ You will also need to have docker installed and set up in your computer. While w
 Open up your terminal and navigate to a directory of your choosing in your computer. Once there, run the following command to get the code for the session.
 
 ```sh
- git clone https://github.com/ramonpzg/pycon.git
+ git clone https://github.com/ramonpzg/pycond-ph-deng-23.git
 ```
 
 Conversely, you can click on the green `download` button at the top and donwload all files to your desired folder/directory. Once you download it, unzip it and move on to the second step.
